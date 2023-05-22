@@ -1,9 +1,8 @@
-name: Code Coverage
+name: CI-test
+
 
 on:
-  pull_request:
-    branches:
-      - main
+  push:
 
 jobs:
   build-and-test:
@@ -16,31 +15,32 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '3.1'
+          dotnet-version: 6.0.x
 
       - name: Build and Test
         run: dotnet test --collect:"XPlat Code Coverage"
-
-      - name: Upload code coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-
-      - name: Comment code coverage results on pull request
-        uses: actions/github-script@v4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const { data } = await context.github.actions.getWorkflowRun({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              run_id: context.runId
-            });
-            const coverageUrl = data.html_url + '#artifacts';
-            await context.github.pulls.createReview({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number,
-              event: 'COMMENT',
-              body: `Code coverage results: [${coverageUrl}](${coverageUrl})`
-            });
+                
+#      - name: Upload code coverage to Codecov
+#        uses: codecov/codecov-action@v1
+#        with:
+#          token: ${{ secrets.CODECOV_TOKEN }}
+#
+#      - name: Comment code coverage results on pull request
+#        uses: actions/github-script@v4
+#        with:
+#          github-token: ${{ secrets.GITHUB_TOKEN }}
+#          script: |
+#            const { data } = await context.github.actions.getWorkflowRun({
+#              owner: context.repo.owner,
+#              repo: context.repo.repo,
+#              run_id: context.runId
+#            });
+#            const coverageUrl = data.html_url + '#artifacts';
+#            await context.github.pulls.createReview({
+#              owner: context.repo.owner,
+#              repo: context.repo.repo,
+#              pull_number: context.issue.number,
+#              event: 'COMMENT',
+#              body: `Code coverage results: [${coverageUrl}](${coverageUrl})`
+#            });
+          
