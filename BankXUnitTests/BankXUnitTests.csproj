@@ -12,8 +12,11 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
+
+    </PackageReference>
     <PackageReference Include="coverlet.collector" Version="1.3.0">
     <PackageReference Include="coverlet.msbuild" Version="ADD VERSION FROM bin\Debug\Packages generated running 'dotnet pack' from repo root" >
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
