@@ -7,7 +7,6 @@
     <CoverletOutputFormat>cobertura</CoverletOutputFormat>
     <CoverletOutputDirectory>./custom-output-path/</CoverletOutputDirectory>
     <CoverletOutput>BankXUnitTests/TestResults/</CoverletOutput>
-    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
