@@ -33,4 +33,7 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
          token: ${{ secrets.CODECOV_TOKEN }}
-         file: ./automated-test-pipeline/BankNUnitTests/TestResults/*/coverage.cobertura.xml
+         directory: ./BankNUnitTests/TestResults/
+         fail_ci_if_error: true
+         verbose: true
+         file: ./coverage.cobertura.xml
