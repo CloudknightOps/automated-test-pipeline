@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
       - main
@@ -28,10 +28,10 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Run tests with NUnit
-        run: dotnet test --configuration Release --collect:"XPlat Code Coverage"
-
-      - name: Upload coverage report to Codecov
-        uses: codecov/codecov-action@v2
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./TestResults/**/coverage.cobertura.xml
+        run: dotnet test --configuration Release 
+#       --collect:"XPlat Code Coverage"
+#      - name: Upload coverage report to Codecov
+#        uses: codecov/codecov-action@v2
+#        with:
+#          token: ${{ secrets.CODECOV_TOKEN }}
+#          file: ./TestResults/**/coverage.cobertura.xml
