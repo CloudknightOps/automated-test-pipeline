@@ -3,10 +3,10 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build-and-test:
@@ -35,5 +35,5 @@ jobs:
         with:
          token: ${{ secrets.CODECOV_TOKEN }}
          directory: ./BankNUnitTests/TestResults/
-         fail_ci_if_error: false
+         fail_ci_if_error: true
          file: /coverage.cobertura.xml
