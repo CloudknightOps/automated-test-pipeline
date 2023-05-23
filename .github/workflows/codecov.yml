@@ -29,10 +29,11 @@ jobs:
 
       - name: Run tests 
         run: dotnet test --configuration Release  --collect:"XPlat Code Coverage"
+
       - name: Upload coverage report to Codecov
         uses: codecov/codecov-action@v3
         with:
          token: ${{ secrets.CODECOV_TOKEN }}
          directory: ./BankNUnitTests/TestResults/
          fail_ci_if_error: true
-         file: ./coverage.cobertura.xml
+         file: */coverage.cobertura.xml
